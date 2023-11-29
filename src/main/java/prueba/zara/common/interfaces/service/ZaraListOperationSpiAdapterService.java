@@ -6,4 +6,5 @@ import prueba.zara.common.interfaces.model.domain.ZaraDomainModel;
 public interface ZaraListOperationSpiAdapterService<C extends ZaraCriteriaDomainModel, L extends ZaraDomainModel>
 		extends ZaraSpiAdapterService {
 
+	L getList(C cdm);
 }

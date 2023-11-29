@@ -1,5 +1,9 @@
 package prueba.zara.common.interfaces.service;
 
-public interface ZaraSpiPortService {
+import prueba.zara.common.interfaces.model.domain.ZaraCriteriaDomainModel;
+
+public interface ZaraSpiPortService<C extends ZaraCriteriaDomainModel> {
+
+	void process(C cdm);
 
 }
