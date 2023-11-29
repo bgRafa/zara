@@ -1,4 +1,4 @@
-package prueba.zara.common.model;
+package prueba.zara.common.interfaces.model.domain;
 
 import java.io.Serializable;
 
