@@ -11,11 +11,11 @@ public class ZaraCuPrincipalViewModel implements ZaraViewModel {
 
 	private static final long serialVersionUID = 5147556506982154538L;
 
-	private Date fechaAplicacionIni;
-	private Date fechaAplicacionFin;
-	private Long identificadorProducto;
-	private Long identificadorCadena;
+	private Long brandId;
+	private Long productId;
+	private Long idTarifaAplicable;
+	private Date fechaInicio;
+	private Date fechaFin;
+	private BigDecimal precio;
 
-	private BigDecimal precioFinal;
-	private Long tarifaAplicar;
 }
