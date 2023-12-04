@@ -16,7 +16,6 @@ public class ZaraCuPrincipalSpiPortServiceImpl implements ZaraCuPrincipalSpiPort
 	@Override
 	public void process(ZaraCuPrincipalCriteriaDomainModel cdm) {
 		var domain = spiAdapterService.get(cdm);
-		var cuPrincipal = cdm.getCuPrincipal();
-		cuPrincipal.setPricesDomainModel(domain);
+		cdm.setPricesDomainModel(domain);
 	}
 }

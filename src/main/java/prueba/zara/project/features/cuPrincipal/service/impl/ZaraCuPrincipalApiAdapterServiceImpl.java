@@ -3,8 +3,8 @@ package prueba.zara.project.features.cuPrincipal.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import prueba.zara.project.features.cuPrincipal.mapper.ZaraCuPrincipalMapper;
 import prueba.zara.project.features.cuPrincipal.model.domain.ZaraCuPrincipalCriteriaDomainModel;
+import prueba.zara.project.features.cuPrincipal.model.domain.ZaraCuPrincipalDomainModel;
 import prueba.zara.project.features.cuPrincipal.model.view.ZaraCuPrincipalInputViewModel;
 import prueba.zara.project.features.cuPrincipal.model.view.ZaraCuPrincipalViewModel;
 import prueba.zara.project.features.cuPrincipal.service.ZaraCuPrincipalApiAdapterService;
@@ -26,15 +26,26 @@ public class ZaraCuPrincipalApiAdapterServiceImpl implements ZaraCuPrincipalApiA
 	@Override
 	public ZaraCuPrincipalCriteriaDomainModel check(ZaraCuPrincipalInputViewModel input) {
 		var cdm = new ZaraCuPrincipalCriteriaDomainModel();
-		var domain = ZaraCuPrincipalMapper.INSTANCE.toDomain(input);
+
+		var domain = new ZaraCuPrincipalDomainModel();
+		domain.setFechaAplicacion(input.getFechaAplicacion());
+		domain.setIdentificadorCadena(input.getIdentificadorCadena());
+		domain.setIdentificadorProducto(input.getIdentificadorProducto());
 		cdm.setCuPrincipal(domain);
 		return cdm;
 	}
 
 	@Override
 	public ZaraCuPrincipalViewModel toView(ZaraCuPrincipalCriteriaDomainModel cdm) {
-		var cuPrincipal = cdm.getCuPrincipal();
-		var domain = cuPrincipal.getPricesDomainModel();
-		return ZaraCuPrincipalMapper.INSTANCE.toView(domain);
+		var domain = cdm.getPricesDomainModel();
+		var view = new ZaraCuPrincipalViewModel();
+		view.setBrandId(domain.getBrandId());
+		view.setIdTarifaAplicable(domain.getIdTarifaAplicable());
+		view.setFechaInicio(domain.getFechaInicio());
+		view.setFechaFin(domain.getFechaFin());
+		view.setPrecio(domain.getPrecio());
+		view.setProductId(domain.getProductId());
+
+		return view;
 	}
 }

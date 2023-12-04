@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import prueba.zara.project.dao.ZaraPrices;
-import prueba.zara.project.features.cuPrincipal.mapper.ZaraCuPrincipalMapper;
 import prueba.zara.project.features.cuPrincipal.model.domain.ZaraCuPrincipalCriteriaDomainModel;
 import prueba.zara.project.features.cuPrincipal.service.ZaraCuPrincipalSpiAdapterService;
 import prueba.zara.project.model.domain.ZaraPricesDomainModel;
@@ -28,7 +27,16 @@ public class ZaraCuPrincipalSpiAdapterServiceImpl implements ZaraCuPrincipalSpiA
 
 		var result = listadoPrices.stream().findFirst().orElse(null);
 
-		return ZaraCuPrincipalMapper.INSTANCE.toDomain(result);
+		var domain = new ZaraPricesDomainModel();
+		domain.setBrandId(result.getId().getBrandId());
+		domain.setFechaFin(result.getFechaFin());
+		domain.setFechaInicio(result.getFechaFin());
+		domain.setIdTarifaAplicable(result.getId().getIdTarifaAplicable());
+		domain.setPrecio(result.getPrecio());
+		domain.setPriority(result.getPriority());
+		domain.setProductId(result.getId().getProductId());
+		domain.setTipoMoneda(result.getTipoMoneda());
+		return domain;
 	}
 
 }
